@@ -2064,25 +2064,8 @@ def main(server_name=None, server_port=None, share=False):
             )
 
         # Pass through host/port/share from CLI if provided
-        demo.launch(
-            server_name=server_name,
-            server_port=server_port,
-            share=true,
-        )
-
+        demo.launch(share=True)
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Run Chatterbox-TTS Extended UI")
-    parser.add_argument("--host", default=None, help="Host/IP to bind (e.g., 0.0.0.0 for all interfaces)")
-    parser.add_argument("--port", type=int, default=None, help="Port to bind (e.g., 7860)")
-    parser.add_argument("--share", action="store_true", help="Enable Gradio share link")
-    parser.add_argument("--public", action="store_true",
-                        help="Shortcut for --host 0.0.0.0 (bind all interfaces)")
+    main()
 
-    args = parser.parse_args()
-
-    # --public is a convenience alias
-    if args.public and not args.host:
-        args.host = "0.0.0.0"
-
-    main(server_name=args.host, server_port=args.port, share=args.share)
 
